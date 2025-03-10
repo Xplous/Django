@@ -1,0 +1,29 @@
+{% load static tailwind_tags %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    {% tailwind_css %}
+    <meta charset="UTF-8">
+    <title>{% block title %}Мой сайт{% endblock %}</title>
+</head>
+<header>
+    {% block header_content %}
+    <div class="w-full bg-blue-200 flex justify-between items-center">
+        <img src="{% static 'img/favicon.png' %}" alt="logo" width="100">
+        <nav>
+            <ul class="flex gap-4 items-center">
+                <li><a href="home.html">Главная</a></li>
+                <li><a href="home.html">О нас</a></li>
+                <li><a href="home.html">Главная</a></li>
+            </ul>
+        </nav>
+        <button class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 bg-primary text-primary-foreground shadow hover:bg-primary/90 h-9 px-4 py-2">Вход</button>
+    </div>
+    {% endblock %}
+</header>
+<body>
+    {% block content %}
+    <!-- Здесь будет контент дочерних шаблонов -->
+    {% endblock %}
+</body>
+</html>
