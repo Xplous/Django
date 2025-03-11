@@ -1,29 +1,59 @@
-{% load static tailwind_tags %}
+{% load static tailwind_tags  %}
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" class="h-full">
 <head>
-    {% tailwind_css %}
-    <meta charset="UTF-8">
-    <title>{% block title %}Мой сайт{% endblock %}</title>
+  {% tailwind_css %}
+  <link rel="stylesheet" type="text/css" href="{% static 'css/other.css' %}">
+  <meta charset="UTF-8">
+  <title>{% block title %}SubScriber{% endblock %}</title>
+  <link href="{% static '/img/favicon.png' %}" datatype="image/png" rel="shortcut icon" type="image/png">
+  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
-<header>
-    {% block header_content %}
-    <div class="w-full bg-blue-200 flex justify-between items-center">
-        <img src="{% static 'img/favicon.png' %}" alt="logo" width="100">
-        <nav>
-            <ul class="flex gap-4 items-center">
-                <li><a href="home.html">Главная</a></li>
-                <li><a href="home.html">О нас</a></li>
-                <li><a href="home.html">Главная</a></li>
-            </ul>
-        </nav>
-        <button class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 bg-primary text-primary-foreground shadow hover:bg-primary/90 h-9 px-4 py-2">Вход</button>
+<body class="min-h-screen">
+    <div class="flex flex-col banner">
+          <header class="w-full flex bg-black/80 backdrop-blur-[2px] justify-center items-center z-10">
+            {% block header_content %}
+            <div class="w-full flex justify-between items-center container">
+              <img src="{% static 'img/favicon.png' %}" alt="logo" width="140" class="my-4">
+              <nav>
+                <ul class="flex gap-6 items-center text-white text-xl">
+                  <li class="group">
+                    <a href="/" class="relative inline-block">
+                      Главная
+                      <span class="absolute left-0 bottom-0 block h-0.5 {% if request.resolver_match.url_name == 'home' %}w-full{% else %}w-0{% endif %} bg-[#DA0463] transition-all duration-300 ease-out group-hover:w-full"></span>
+                    </a>
+                  </li>
+                  <p class="cursor-default">|</p>
+                  <li class="group">
+                    <a href="/about" class="relative inline-block">
+                      О нас
+                      <span class="absolute left-0 bottom-0 block h-0.5 {% if request.resolver_match.url_name == 'about' %}w-full{% else %}w-0{% endif %} bg-[#DA0463] transition-all duration-300 ease-out group-hover:w-full"></span>
+                    </a>
+                  </li>
+                  <p class="cursor-default">|</p>
+                  <li class="group">
+                    <a href="/contact" class="relative inline-block">
+                      Контакты
+                      <span class="absolute left-0 bottom-0 block h-0.5 {% if request.resolver_match.url_name == 'contact' %}w-full{% else %}w-0{% endif %} bg-[#DA0463] transition-all duration-300 ease-out group-hover:w-full"></span>
+                    </a>
+                  </li>
+                </ul>
+              </nav>
+              <a href="/login" class="w-[140px]">
+                <c-button variant="default" class="my-4 text-white text-[1rem] bg-[#DA0463] hover:bg-gray-600 transition-all duration-300 cursor-pointer">Войти</c-button>
+              </a>
+            </div>
+            {% endblock %}
+          </header>
+          <main class="flex-1 overflow-auto h-full backdrop-blur-[1px]">
+            {% block content %}
+            <!-- Контент дочерних шаблонов -->
+            {% endblock %}
+          </main>
     </div>
-    {% endblock %}
-</header>
-<body>
-    {% block content %}
-    <!-- Здесь будет контент дочерних шаблонов -->
-    {% endblock %}
+    <footer class="text-white flex gap-2 bg-black/80 backdrop-blur-[2px] items-center justify-center flex-col z-10 fixed bottom-0 w-full p-4">
+                <h1>© Все права защищены</h1>
+                <p>2025</p>
+    </footer>
 </body>
 </html>
