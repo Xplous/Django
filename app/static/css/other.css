@@ -6,8 +6,6 @@ More comprehensive version at shenanigans.shoghisimon.ca/collection/css-blur-blo
 .banner::after {
   content: "";
   position: absolute;
-  inset: 0;
-  z-index: 1;
   backdrop-filter: hue-rotate(90deg);
   mask: linear-gradient(45deg, #0000, #000);
   animation: rotaty 5s linear infinite;

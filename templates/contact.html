@@ -1,7 +1,25 @@
 {% extends "base.html" %}
-
-{% block title %} {{ block.super }} - Контакты {% endblock %}
+{% load static %}
+{% block title %}{{ block.super }} - Контакты{% endblock %}
 
 {% block content %}
-    {{ block.super }}
+    <div class="flex flex-1 flex-col bg-zinc-800 py-16">
+        <div class="container mx-auto px-6">
+            <h1 class="text-4xl font-extrabold text-white text-center mb-8">Контакты</h1>
+            <div class="flex flex-col md:flex-row justify-between items-center gap-8 mb-16">
+                <div class="md:w-1/2 text-center md:text-left">
+                    <h2 class="text-3xl font-bold text-white mb-4">Свяжитесь с нами</h2>
+                    <p class="text-gray-300 leading-relaxed">Если у вас есть вопросы или предложения, не стесняйтесь обращаться к нам. Мы всегда открыты для общения!</p>
+                    <ul class="text-gray-300 mt-4">
+                        <li>Email: <a href="mailto:nick.filippoff2016@yandex.ru" class="text-blue-400">nick.filippoff2016@yandex.ru</a></li>
+                        <li>Телефон: <a href="tel:+79118907854" class="text-blue-400">+7 911 890 78 54</a></li>
+                        <li>Адрес: ул. Примерная, 10, г. Москва, Россия</li>
+                    </ul>
+                </div>
+                <div class="md:w-1/2 flex justify-center">
+                    <img src="{% static '/img/message-filled.svg' %}" alt="Контакты" class="w-full max-w-xs"/>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

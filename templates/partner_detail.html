@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}{{ partner.name }} - Партнёр{% endblock %}
+
+{% block content %}
+<div class="flex-1 bg-zinc-800 py-16 px-4">
+    <div class="bg-white rounded-lg shadow-lg overflow-hidden w-full max-w-5xl mx-auto">
+        <div class="flex flex-col md:flex-row">
+            <!-- Левая колонка: логотип и название -->
+            <div class="md:w-1/2 p-6">
+                {% if partner.logo %}
+                    <img src="{{ partner.logo.url }}" alt="{{ partner.name }} логотип" class="w-max h-64 object-cover">
+                {% else %}
+                    <img src="{% static 'img/none.png' %}" alt="{{ partner.name }}" class="w-max h-64 object-cover">
+                {% endif %}
+                <h1 class="text-3xl font-bold text-zinc-800 mt-4">{{ partner.name }}</h1>
+                <a href="{% url 'partner_list' %}" class="inline-block mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition duration-200">
+                    Назад к списку
+                </a>
+            </div>
+            <!-- Правая колонка: описание партнёра -->
+            <div class="md:w-1/2 p-6 bg-gray-50">
+                <h2 class="text-2xl font-semibold text-zinc-800 mb-4">Описание</h2>
+                <p class="text-gray-700">{{ partner.description }}</p>
+            </div>
+        </div>
+        <!-- Блок комментариев -->
+        <div class="p-6 border-t border-gray-200">
+            <h2 class="text-2xl font-semibold text-zinc-800 mb-4">Комментарии</h2>
+            <div class="space-y-4 mb-6">
+                {% for comment in comments %}
+                    <div class="border-b border-gray-200 pb-4">
+                        <p class="text-gray-700">{{ comment.text }}</p>
+                        <span class="text-sm text-gray-500">Автор: {{ comment.author }} | {{ comment.created_at }}</span>
+                    </div>
+                {% empty %}
+                    <p class="text-gray-700">Комментариев пока нет.</p>
+                {% endfor %}
+            </div>
+            <form action="{% url 'partner_comment' partner.id %}" method="post" class="space-y-4">
+                {% csrf_token %}
+                <textarea name="comment" rows="3" class="w-full border border-gray-300 p-2 rounded" placeholder="Ваш комментарий"></textarea>
+                <button type="submit" class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 transition duration-200">
+                    Добавить комментарий
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

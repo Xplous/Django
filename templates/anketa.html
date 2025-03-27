@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+{% load custom_filters %}
+
+{% block content %}
+    <div class="min-h-[calc(100vh_-_68px)] p-4">
+        <div class="max-w-lg mx-auto bg-white shadow-lg rounded-lg p-6 mt-10">
+            {% if form != None %}
+                <h2 class="text-2xl font-bold text-center text-gray-700 mb-6">Обратная связь</h2>
+
+                <form method="post" class="space-y-4">
+                    {% csrf_token %}
+
+                    <div>
+                        <label for="{{ form.name.id_for_label }}" class="block text-gray-700 font-medium">{{ form.name.label }}</label>
+                        {{ form.name|add_class:"w-full p-2 border rounded-md focus:ring focus:ring-blue-300" }}
+                    </div>
+                    <div>
+                        <label for="{{ form.internet.id_for_label }}" class="block text-gray-700 font-medium">{{ form.internet.label }}</label>
+                        {{ form.internet|add_class:" p-2 border rounded-md focus:ring focus:ring-blue-300" }}
+                    </div>
+
+                    <div class="flex items-center space-x-2">
+                        {{ form.notice }}
+                        <label for="{{ form.notice.id_for_label }}" class="text-gray-700 font-medium">{{ form.notice.label }}</label>
+                    </div>
+
+                    <div>
+                        <label for="{{ form.email.id_for_label }}" class="block text-gray-700 font-medium">{{ form.email.label }}</label>
+                        {{ form.email|add_class:"w-full p-2 border rounded-md focus:ring focus:ring-blue-300" }}
+                    </div>
+
+                    <div>
+                        <label for="{{ form.message.id_for_label }}" class="block text-gray-700 font-medium">{{ form.message.label }}</label>
+                        {{ form.message|add_class:"w-full p-2 border rounded-md focus:ring focus:ring-blue-300" }}
+                    </div>
+
+                    <!-- Кнопка с анимацией -->
+                    <button type="submit" id="submitButton" class="w-full bg-blue-900 text-white py-2 px-4 rounded-md transition cursor-pointer">
+                        Отправить
+                    </button>
+                </form>
+            {% else %}
+                <h2 class="text-2xl font-bold text-center text-gray-700">Благодарим за предоставленную информацию!</h2>
+                <h3 class="text-lg text-center text-gray-600 mt-4">Вы сообщили о себе следующее:</h3>
+                <ul class="mt-4 bg-gray-100 p-4 rounded-lg">
+                    <li class="border-b py-2"><strong>Имя:</strong> {{ data.name }}</li>
+                    <li class="border-b py-2"><strong>Оценка:</strong> {{ data.internet }}</li>
+                    <li class="border-b py-2"><strong>Получать новости на e-mail:</strong> {{ data.notice }}</li>
+                    <li class="border-b py-2"><strong>E-mail:</strong> {{ data.email }}</li>
+                    <li class="py-2"><strong>Информация о себе:</strong> {{ data.message }}</li>
+                </ul>
+            {% endif %}
+        </div>
+    </div>
+
+    <script>
+        // Получаем кнопку отправки
+        const submitButton = document.getElementById('submitButton');
+        const inputFields = document.querySelectorAll('input, textarea');
+
+        submitButton.addEventListener('mouseover', function() {
+            this.style.color = '#f0f8ff';
+            this.style.fontWeight = 'bold';
+            this.style.backgroundColor = 'oklch(0.546 0.245 262.881)';
+        });
+
+        submitButton.addEventListener('mouseout', function() {
+            this.style.color = 'white';
+            this.style.fontWeight = 'normal';
+            this.style.backgroundColor = 'oklch(0.379 0.146 265.522)';
+        });
+        inputFields.forEach(input => {
+            if (input.type === 'radio') {
+              input.addEventListener('focus', function() {
+                this.style.backgroundColor = '#082a46';
+            });
+            }
+            else {
+                input.addEventListener('focus', function() {
+                this.style.backgroundColor = '#f0f8ff';
+            });
+            }
+
+            input.addEventListener('blur', function() {
+                this.style.backgroundColor = '';
+            });
+        });
+    </script>
+{% endblock %}

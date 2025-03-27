@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Добавить партнёра{% endblock %}
+
+{% block content %}
+<div class="min-h-screen bg-zinc-800 py-16 px-4 flex justify-center items-center">
+    <div class="bg-white rounded-lg shadow-lg p-8 w-full max-w-2xl">
+        <h1 class="text-3xl font-bold text-zinc-800 mb-6">Добавить нового партнёра</h1>
+        
+        <form method="post" enctype="multipart/form-data" class="space-y-4">
+            {% csrf_token %}
+            
+            <div>
+                <label for="id_name" class="block text-zinc-700 font-semibold">Название</label>
+                <input type="text" name="name" id="id_name" class="w-full border border-gray-300 p-2 rounded" required>
+            </div>
+            
+            <div>
+                <label for="id_description" class="block text-zinc-700 font-semibold">Описание</label>
+                <textarea name="description" id="id_description" rows="3" class="w-full border border-gray-300 p-2 rounded" required></textarea>
+            </div>
+            
+            <div>
+                <label for="id_logo" class="block text-zinc-700 font-semibold">Логотип (необязательно)</label>
+                <input type="file" name="logo" id="id_logo" class="w-full border border-gray-300 p-2 rounded">
+            </div>
+            
+            <button type="submit" class="w-full px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 transition duration-200">
+                Добавить партнёра
+            </button>
+        </form>
+    </div>
+</div>
+{% endblock %}

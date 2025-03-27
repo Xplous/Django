@@ -1,0 +1,174 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}{{ block.super }} - Полезные ресурсы{% endblock %}
+
+{% block content %}
+    <div class="flex flex-1 flex-col bg-zinc-800 py-16">
+        <div class="container mx-auto px-6">
+            <h1 class="text-4xl font-extrabold text-white text-center mb-8">Полезные ресурсы</h1>
+            <p class="text-lg text-gray-300 text-center mb-12">
+                Подборка лучших ресурсов для разработчиков: документация, обучающие курсы, сообщества и полезные инструменты.
+            </p>
+
+            <!-- Документация -->
+            <div class="grid grid-cols-3 gap-8 text-nowrap">
+                <div>
+                    <h2 class="text-3xl font-bold text-white mb-4">📚 Документация</h2>
+                    <ul class="text-gray-300 list-disc pl-6 grid grid-cols-1 grid-rows-3 gap-4 overflow-hidden text-ellipsis">
+                        <li>
+                            <a href="https://developer.mozilla.org/ru/" class="text-blue-400 hover:underline flex items-center space-x-2">
+                                <img src="https://developer.mozilla.org/favicon.ico" alt="MDN Web Docs" width="24" height="24">
+                                <span>MDN Web Docs — Фронтенд-разработка</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://docs.python.org/3/" class="text-blue-400 hover:underline flex items-center space-x-2">
+                                <img src="https://docs.python.org/favicon.ico" alt="Python Docs" width="24" height="24">
+                                <span>Python Docs — Официальная документация</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://react.dev/" class="text-blue-400 hover:underline flex items-center space-x-2">
+                                <img src="https://react.dev/favicon.ico" alt="React Docs" width="24" height="24">
+                                <span>React Docs — Фреймворк для веб-разработки</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Обучающие курсы -->
+                <div>
+                    <h2 class="text-3xl font-bold text-white mb-4">🎓 Курсы и обучение</h2>
+                    <ul class="text-gray-300 list-disc pl-6 grid grid-cols-1 grid-rows-3 gap-4 overflow-hidden text-ellipsis">
+                        <li>
+                            <a href="https://stepik.org/" class="text-blue-400 hover:underline flex items-center space-x-2">
+                                <img src="https://stepik.org/favicon.ico" alt="Stepik" width="24" height="24">
+                                <span>Stepik — Курсы по Python, ML и веб-разработке</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://roadmap.sh/" class="text-blue-400 hover:underline flex items-center space-x-2">
+                                <img src="https://roadmap.sh/favicon.ico" alt="Roadmap.sh" width="24" height="24">
+                                <span>Roadmap.sh — Дорожные карты для изучения технологий</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.udemy.com/courses/development/" class="text-blue-400 hover:underline flex items-center space-x-2">
+                                <img src="https://frontends.udemycdn.com/frontends-marketplace-experience/staticx/udemy/images/v8/favicon-32x32.png" alt="Udemy" width="24" height="24">
+                                <span>Udemy — Платные и бесплатные курсы</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Полезные инструменты -->
+                <div>
+                    <h2 class="text-3xl font-bold text-white mb-4">🛠 Полезные инструменты</h2>
+                    <ul class="text-gray-300 list-disc pl-6 grid grid-cols-1 grid-rows-3 gap-4 overflow-hidden text-ellipsis">
+                        <li>
+                            <a href="https://github.com/" class="text-blue-400 hover:underline flex items-center space-x-2">
+                                <img src="https://github.com/favicon.ico" alt="GitHub" width="24" height="24">
+                                <span>GitHub — Репозитории и open-source проекты</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://code.visualstudio.com/" class="text-blue-400 hover:underline flex items-center space-x-2">
+                                <img src="https://code.visualstudio.com/favicon.ico" alt="VS Code" width="24" height="24">
+                                <span>VS Code — Легкий и мощный редактор кода</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.postman.com/" class="text-blue-400 hover:underline flex items-center space-x-2">
+                                <img src="https://www.postman.com/_mk-www-v8.244.0/favicon-32x32.png?v=385b24b9d8db6d360e97f2fe356659b5" alt="Postman" width="24" height="24">
+                                <span>Postman — Работа с REST API</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Сообщества и форумы -->
+                <div>
+                    <h2 class="text-3xl font-bold text-white mb-4">👨‍💻 Сообщества и форумы</h2>
+                    <ul class="text-gray-300 list-disc pl-6 grid grid-cols-1 grid-rows-3 gap-4 overflow-hidden text-ellipsis">
+                        <li>
+                            <a href="https://stackoverflow.com/" class="text-blue-400 hover:underline flex items-center space-x-2 ">
+                                <img src="https://stackoverflow.com/favicon.ico" alt="Stack Overflow" width="24" height="24">
+                                <span class="text-ellipsis">Stack Overflow — Ответы на вопросы по программированию</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://t.me/frontend_ru" class="text-blue-400 hover:underline flex items-center space-x-2">
+                                <img src="https://telegram.org/favicon.ico" alt="Frontend в Telegram" width="24" height="24">
+                                <span>Frontend в Telegram — Русскоязычное сообщество</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://habr.com/ru/" class="text-blue-400 hover:underline flex items-center space-x-2">
+                                <img src="https://habr.com/favicon.ico" alt="Habr" width="24" height="24">
+                                <span>Habr — Статьи и новости IT</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Тренды и новинки -->
+                <div>
+                    <h2 class="text-3xl font-bold text-white mb-4">🔥 Тренды и новинки</h2>
+                    <ul class="text-gray-300 list-disc pl-6 grid grid-cols-1 grid-rows-3 gap-4 overflow-hidden text-ellipsis">
+                        <li>
+                            <a href="https://javascriptweekly.com/" class="text-blue-400 hover:underline flex items-center space-x-2">
+                                <img src="https://javascriptweekly.com/favicon.png" alt="JavaScript Weekly" width="24" height="24">
+                                <span>JavaScript Weekly — Новости JavaScript</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://css-tricks.com/" class="text-blue-400 hover:underline flex items-center space-x-2">
+                                <img src="https://css-tricks.com/favicon.ico" alt="CSS Tricks" width="24" height="24">
+                                <span>CSS Tricks — Все о современных стилях</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://ai.googleblog.com/" class="text-blue-400 hover:underline flex items-center space-x-2">
+                                <img src="https://ai.googleblog.com/favicon.ico" alt="Google AI Blog" width="24" height="24">
+                                <span>Google AI Blog — Новости искусственного интеллекта</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Дизайн и UI/UX -->
+                <div>
+                    <h2 class="text-3xl font-bold text-white mb-4">🎨 Дизайн и UI/UX</h2>
+                    <ul class="text-gray-300 list-disc pl-6 grid grid-cols-1 grid-rows-3 gap-4 overflow-hidden text-ellipsis">
+                        <li>
+                            <a href="https://dribbble.com/" class="text-blue-400 hover:underline flex items-center space-x-2 ">
+                                <img src="https://cdn.dribbble.com/assets/favicon-452601365a822699d1d5db718ddf7499d036e8c2f7da69e85160a4d2f83534bd.ico" alt="Dribbble" width="24" height="24">
+                                <span>Dribbble — Галерея UI/UX дизайна</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.behance.net/" class="text-blue-400 hover:underline flex items-center space-x-2">
+                                <img src="https://a5.behance.net/003a8effa0441457ef4a9f4824e86cca0f14726d/img/site/favicon.png?cb=264615658" alt="Behance" width="24" height="24">
+                                <span>Behance — Портфолио дизайнеров</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.figma.com/" class="text-blue-400 hover:underline flex items-center space-x-2">
+                                <img src="https://static.figma.com/app/icon/1/favicon.svg" alt="Figma" width="24" height="24">
+                                <span>Figma — Дизайн и прототипирование</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- Поддержка и контакты -->
+        <div class="text-center mt-12">
+            <h2 class="text-3xl font-bold text-white mb-4">📩 Поддержка и обратная связь</h2>
+            <p class="text-gray-300">Если у вас есть вопросы или предложения, пишите нам:</p>
+            <p class="text-blue-400 mt-2">
+                <a href="mailto:nick.filippoff2016@yandex.ru" class="hover:underline">nick.filippoff2016@yandex.ru</a>
+            </p>
+        </div>
+    </div>
+{% endblock %}

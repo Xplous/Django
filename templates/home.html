@@ -1,8 +1,219 @@
 {% extends "base.html" %}
-
-{% block title %} {{ block.super }} - Главная страница {% endblock %}
+{% load static %}
+{% block title %}{{ block.super }} - Главная страница{% endblock %}
 {% block content %}
-    <div class="h-full w-full flex justify-center items-center">
-    <h1 class="text-white font-bold text-5xl animated-text">Один кабинет – все лучшие сервисы!</h1>
+    <div class="flex flex-1 flex-col banner">
+      <main class="flex-1 overflow-auto h-full backdrop-blur-[1px]">
+        <div class="h-full w-full gap-4 flex flex-col justify-center items-center">
+          <h1 class="text-white font-bold text-5xl animated-text">Удобство с первой минуты использования</h1>
+          <h2 class="text-white font-bold text-4xl animated-text">Subscriber – менеджер ваших подписок</h2>
+          <div class="flex gap-4 group">
+            <!-- Кнопка "Купить" -->
+            <c-button
+              id="buyButton"
+              variant="default"
+              class="buy relative overflow-hidden my-4 text-[1rem] bg-[#DA0463] backdrop-blur-[2px] transition-all duration-300 cursor-pointer
+                     after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-0
+                     after:bg-black after:transition-all after:duration-300 after:z-0
+                     rounded-none !py-6 !text-2xl !font-light"
+            >
+              <span class="relative z-10 text-white">Купить →</span>
+            </c-button>
+
+            <!-- Кнопка "Опробовать" -->
+            <c-button
+              id="tryButton"
+              variant="default"
+              class="try relative overflow-hidden my-4 text-[1rem] bg-black transition-all duration-300 cursor-pointer
+                     after:content-[''] after:absolute after:top-0 after:left-0 after:w-full after:h-0
+                     after:bg-[#DA0463] after:transition-all after:duration-300 after:z-0
+                     hover:after:h-full rounded-none !py-6 !text-2xl !font-light"
+            >
+              <span class="relative z-10 text-white">Опробовать →</span>
+            </c-button>
+          </div>
+        </div>
+      </main>
     </div>
+
+    <div class="h-[calc(100vh_-_68px)]"></div>
+{% endblock %}
+{% block dop_content %}
+    <div class="bg-black flex justify-center items-center py-10">
+    <div class="container">
+    <h1 class="text-white text-4xl pb-4">Всё для контроля ваших подписок</h1>
+    <div class="grid grid-cols-2 grid-rows-3 gap-20">
+
+        <div class="flex flex-col gap-4 bg-zinc-800 p-6">
+            <div class="flex gap-5 text-white items-center">
+                <img src="{% static '/img/fire.svg' %}" width="64" height="64" class="bg-blue-950 rounded-4xl p-2"/>
+                <h2 class="text-2xl">Все подписки под контролем</h2>
+            </div>
+            <ul class="text-white list-disc pl-6">
+                <li>Единый дашборд для всех подписок</li>
+                <li>Удобный календарь платежей и напоминания</li>
+                <li>Интеграция с банковскими картами и электронными кошельками</li>
+            </ul>
+        </div>
+
+        <div class="flex flex-col gap-4 bg-zinc-800 p-6">
+            <div class="flex gap-5 text-white items-center">
+                <img src="{% static '/img/solar.svg' %}" width="64" height="64" class="bg-blue-950 rounded-4xl p-2"/>
+                <h2 class="text-2xl">Оптимизация расходов</h2>
+            </div>
+            <ul class="text-white list-disc pl-6">
+                <li>Анализ подписок: какие сервисы ты редко используешь?</li>
+                <li>Умные рекомендации по экономии</li>
+                <li>Поиск более выгодных тарифов и скидок</li>
+            </ul>
+        </div>
+
+        <div class="flex flex-col gap-4 bg-zinc-800 p-6">
+            <div class="flex gap-5 text-white items-center">
+                <img src="{% static '/img/automation.svg' %}" width="64" height="64" class="bg-blue-950 rounded-4xl p-2"/>
+                <h2 class="text-2xl">Автоматизация и удобство</h2>
+            </div>
+            <ul class="text-white list-disc pl-6">
+                <li>Автооплата и автоматическая отмена ненужных подписок</li>
+                <li>Гибкие настройки платежей: вручную или автоматически</li>
+                <li>Группировка подписок (развлечения, работа, обучение и т. д.)</li>
+            </ul>
+        </div>
+
+        <div class="flex flex-col gap-4 bg-zinc-800 p-6">
+            <div class="flex gap-5 text-white items-center">
+                <img src="{% static '/img/security-lock.svg' %}" width="64" height="64" class="bg-blue-950 rounded-4xl p-2"/>
+                <h2 class="text-2xl">Приватность и безопасность</h2>
+            </div>
+            <ul class="text-white list-disc pl-6">
+                <li>Шифрование данных и защита платежной информации</li>
+                <li>Двухфакторная аутентификация</li>
+                <li>Контроль доступа к подпискам в семье или команде</li>
+            </ul>
+        </div>
+
+        <div class="flex flex-col gap-4 bg-zinc-800 p-6">
+            <div class="flex gap-5 text-white items-center">
+                <img src="{% static '/img/garden_app-26.svg' %}" width="64" height="64" class="bg-blue-950 rounded-4xl p-2"/>
+                <h2 class="text-2xl">Персонализированные предложения</h2>
+            </div>
+            <ul class="text-white list-disc pl-6">
+                <li>Специальные скидки и кэшбек на популярные сервисы</li>
+                <li>Персональные рекомендации на основе твоих интересов</li>
+                <li>Альтернативные сервисы с лучшими условиями</li>
+            </ul>
+        </div>
+
+        <div class="flex flex-col gap-4 bg-zinc-800 p-6">
+            <div class="flex gap-5 text-white items-center">
+                <img src="{% static '/img/mingcute_ai-line.svg' %}" width="64" height="64" class="bg-blue-950 rounded-4xl p-2"/>
+                <h2 class="text-2xl">Доступность на всех устройствах</h2>
+            </div>
+            <ul class="text-white list-disc pl-6">
+                <li>Мобильное приложение и веб-версия</li>
+                <li>Поддержка смарт-часов и голосовых ассистентов</li>
+                <li>Интеграция с Google Календарём и Apple Wallet</li>
+            </ul>
+        </div>
+
+    </div>
+        <div class="slider">
+  <div class="slides">
+    <input type="radio" name="radio-btn" id="slide1" checked>
+    <input type="radio" name="radio-btn" id="slide2">
+    <input type="radio" name="radio-btn" id="slide3">
+
+    <div class="slide first">
+      <img src="{% static 'img/slide_1.webp' %}" alt="Slide 1" >
+    </div>
+    <div class="slide">
+      <img src="{% static 'img/slide_2.png' %}" alt="Slide 2">
+    </div>
+    <div class="slide">
+      <img src="{% static 'img/slide_3.webp' %}" alt="Slide 3">
+    </div>
+    <div class="navigation-auto">
+      <div class="auto-btn1"></div>
+      <div class="auto-btn2"></div>
+      <div class="auto-btn3"></div>
+    </div>
+  </div>
+
+  <div class="navigation-manual">
+    <label for="slide1" class="manual-btn"></label>
+    <label for="slide2" class="manual-btn"></label>
+    <label for="slide3" class="manual-btn"></label>
+  </div>
+</div>
+
+</div>
+    </div>
+    <style>
+/* Стили для слайдера */
+.slider {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+  margin: auto;
+  padding-top: 20px;
+}
+
+.slides {
+  display: flex;
+  width: 400%;
+  height: 100%;
+}
+
+.slides input {
+  display: none;
+}
+
+.slide {
+  width: 25%;
+  transition: margin-left 0.5s ease-in-out;
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+}
+
+.navigation-manual {
+  position: absolute;
+  width: 100%;
+  bottom: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.manual-btn {
+  border: 2px solid #082a46;
+  padding: 5px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.3s;
+  margin: 0 5px;
+}
+
+.manual-btn:hover {
+  background: #0f5591;
+}
+
+#slide1:checked ~ .first {
+  margin-left: 0;
+}
+
+#slide2:checked ~ .first {
+  margin-left: -25%;
+}
+
+#slide3:checked ~ .first {
+  margin-left: -50%;
+}
+
+#slide4:checked ~ .first {
+  margin-left: -75%;
+}
+</style>
 {% endblock %}

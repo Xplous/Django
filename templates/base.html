@@ -1,59 +1,103 @@
-{% load static tailwind_tags  %}
+{% load static tailwind_tags %}
 <!DOCTYPE html>
 <html lang="ru" class="h-full">
 <head>
-  {% tailwind_css %}
-  <link rel="stylesheet" type="text/css" href="{% static 'css/other.css' %}">
-  <meta charset="UTF-8">
-  <title>{% block title %}SubScriber{% endblock %}</title>
-  <link href="{% static '/img/favicon.png' %}" datatype="image/png" rel="shortcut icon" type="image/png">
-  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    {% tailwind_css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/other.css' %}">
+    <meta charset="UTF-8">
+    <title>{% block title %}SubScriber{% endblock %}</title>
+    <link href="{% static '/img/favicon.png' %}" datatype="image/png" rel="shortcut icon" type="image/png">
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
-<body class="min-h-screen">
-    <div class="flex flex-col banner">
-          <header class="w-full flex bg-black/80 backdrop-blur-[2px] justify-center items-center z-10">
-            {% block header_content %}
-            <div class="w-full flex justify-between items-center container">
-              <img src="{% static 'img/favicon.png' %}" alt="logo" width="140" class="my-4">
-              <nav>
+<body class="flex flex-col min-h-screen">
+<header class="w-full flex bg-black/80 backdrop-blur-[2px] justify-center items-center z-10">
+    {% block header_content %}
+        <div class="w-full flex justify-between items-center container">
+        <a href="{% url "home" %}">
+            <img src="{% static 'img/favicon.png' %}" alt="logo" width="140" class="my-4">
+        </a>
+            <nav>
                 <ul class="flex gap-6 items-center text-white text-xl">
-                  <li class="group">
-                    <a href="/" class="relative inline-block">
-                      Главная
-                      <span class="absolute left-0 bottom-0 block h-0.5 {% if request.resolver_match.url_name == 'home' %}w-full{% else %}w-0{% endif %} bg-[#DA0463] transition-all duration-300 ease-out group-hover:w-full"></span>
-                    </a>
-                  </li>
-                  <p class="cursor-default">|</p>
-                  <li class="group">
-                    <a href="/about" class="relative inline-block">
-                      О нас
-                      <span class="absolute left-0 bottom-0 block h-0.5 {% if request.resolver_match.url_name == 'about' %}w-full{% else %}w-0{% endif %} bg-[#DA0463] transition-all duration-300 ease-out group-hover:w-full"></span>
-                    </a>
-                  </li>
-                  <p class="cursor-default">|</p>
-                  <li class="group">
-                    <a href="/contact" class="relative inline-block">
-                      Контакты
-                      <span class="absolute left-0 bottom-0 block h-0.5 {% if request.resolver_match.url_name == 'contact' %}w-full{% else %}w-0{% endif %} bg-[#DA0463] transition-all duration-300 ease-out group-hover:w-full"></span>
-                    </a>
-                  </li>
+                    <li class="group">
+                        <a href="/" class="relative inline-block">
+                            Главная
+                            <span class="absolute left-0 bottom-0 block h-0.5 {% if request.resolver_match.url_name == 'home' %}w-full{% else %}w-0{% endif %} bg-[#DA0463] transition-all duration-300 ease-out group-hover:w-full"></span>
+                        </a>
+                    </li>
+                    <p class="cursor-default">|</p>
+                    <li class="group">
+                        <a href="/about" class="relative inline-block">
+                            О нас
+                            <span class="absolute left-0 bottom-0 block h-0.5 {% if request.resolver_match.url_name == 'about' %}w-full{% else %}w-0{% endif %} bg-[#DA0463] transition-all duration-300 ease-out group-hover:w-full"></span>
+                        </a>
+                    </li>
+                    <p class="cursor-default">|</p>
+                    <li class="group">
+                        <a href="/contact" class="relative inline-block">
+                            Контакты
+                            <span class="absolute left-0 bottom-0 block h-0.5 {% if request.resolver_match.url_name == 'contact' %}w-full{% else %}w-0{% endif %} bg-[#DA0463] transition-all duration-300 ease-out group-hover:w-full"></span>
+                        </a>
+                    </li>
+                    <p class="cursor-default">|</p>
+                    <li class="group">
+                        <a href="/links" class="relative inline-block">
+                            Полезные ресурсы
+                            <span class="absolute left-0 bottom-0 block h-0.5 {% if request.resolver_match.url_name == 'links' %}w-full{% else %}w-0{% endif %} bg-[#DA0463] transition-all duration-300 ease-out group-hover:w-full"></span>
+                        </a>
+                    </li>
+                    <p class="cursor-default">|</p>
+                    <li class="group">
+                        <a href="{% url 'anketa' %}" class="relative inline-block">
+                            Обратная связь
+                            <span class="absolute left-0 bottom-0 block h-0.5 {% if request.resolver_match.url_name == 'anketa' %}w-full{% else %}w-0{% endif %} bg-[#DA0463] transition-all duration-300 ease-out group-hover:w-full"></span>
+                        </a>
+                    </li>
+                    <p class="cursor-default">|</p>
+                    <li class="group">
+                        <a href="{% url 'partner_list' %}" class="relative inline-block">
+                            Партнёры
+                            <span class="absolute left-0 bottom-0 block h-0.5 {% if request.resolver_match.url_name == 'partners' %}w-full{% else %}w-0{% endif %} bg-[#DA0463] transition-all duration-300 ease-out group-hover:w-full"></span>
+                        </a>
+                    </li>
+                    <p class="cursor-default">|</p>
+                    <li class="group">
+                        <a href="{% url 'video' %}" class="relative inline-block">
+                            Видео
+                            <span class="absolute left-0 bottom-0 block h-0.5 {% if request.resolver_match.url_name == 'video' %}w-full{% else %}w-0{% endif %} bg-[#DA0463] transition-all duration-300 ease-out group-hover:w-full"></span>
+                        </a>
+                    </li>
                 </ul>
-              </nav>
-              <a href="/login" class="w-[140px]">
-                <c-button variant="default" class="my-4 text-white text-[1rem] bg-[#DA0463] hover:bg-gray-600 transition-all duration-300 cursor-pointer">Войти</c-button>
-              </a>
-            </div>
-            {% endblock %}
-          </header>
-          <main class="flex-1 overflow-auto h-full backdrop-blur-[1px]">
-            {% block content %}
-            <!-- Контент дочерних шаблонов -->
-            {% endblock %}
-          </main>
-    </div>
-    <footer class="text-white flex gap-2 bg-black/80 backdrop-blur-[2px] items-center justify-center flex-col z-10 fixed bottom-0 w-full p-4">
-                <h1>© Все права защищены</h1>
-                <p>2025</p>
-    </footer>
+            </nav>
+            {% if user.is_authenticated %}
+                <div class="flex items-center gap-4">
+                    <span class="text-white text-lg">Привет, {{ user.username }}</span>
+                    <form method="POST" action="{% url 'logout' %}">
+                        {% csrf_token %}
+                        <c-button variant="default"
+                                  class="my-4 text-white text-[1rem] bg-[#DA0463] hover:bg-gray-600 transition-all duration-300 cursor-pointer"
+                                  type="submit">
+                            Выйти
+                        </c-button>
+                    </form>
+                </div>
+            {% else %}
+                <a href="/auth" class="w-[140px]">
+                    <c-button variant="default"
+                              class="my-4 text-white text-[1rem] bg-[#DA0463] hover:bg-gray-600 transition-all duration-300 cursor-pointer">
+                        Войти
+                    </c-button>
+                </a>
+            {% endif %}
+        </div>
+    {% endblock %}
+</header>
+{% block content %}
+{% endblock %}
+{% block dop_content %}
+{% endblock %}
+<footer class="text-white flex gap-2 bg-black backdrop-blur-[2px] items-center justify-center flex-col w-full p-4">
+    <h1>© Все права защищены</h1>
+    <p>2025</p>
+</footer>
 </body>
 </html>

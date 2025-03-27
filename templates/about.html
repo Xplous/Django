@@ -1,7 +1,34 @@
 {% extends "base.html" %}
-
-{% block title %} {{ block.super }} - О нас {% endblock %}
+{% load static %}
+{% block title %}{{ block.super }} - О нас{% endblock %}
 
 {% block content %}
-    {{ block.super }}
+    <div class="flex flex-1 flex-col bg-zinc-800 py-16">
+        <div class="container mx-auto px-6">
+            <h1 class="text-4xl font-extrabold text-white text-center mb-8">О нас</h1>
+            <p class="text-lg text-gray-300 text-center mb-12">Мы — команда энтузиастов, стремящихся сделать управление подписками удобным и простым для каждого.</p>
+
+            <!-- Миссия -->
+            <div class="flex flex-col md:flex-row justify-between items-center gap-8 mb-16">
+                <div class="md:w-1/2 text-center md:text-left">
+                    <h2 class="text-3xl font-bold text-white mb-4">Наша миссия</h2>
+                    <p class="text-gray-300 leading-relaxed">Мы создаем решение, которое помогает пользователям управлять своими подписками, экономить деньги и получать максимальную отдачу от каждого сервиса. Мы стремимся сделать этот процесс максимально простым и прозрачным для всех.</p>
+                </div>
+                <div class="md:w-1/2 flex justify-center">
+                    <img src="{% static '/img/wi_stars.svg' %}" alt="Миссия" class="w-full max-w-xs"/>
+                </div>
+            </div>
+
+            <!-- Наша команда -->
+            <div class="flex flex-col md:flex-row justify-between items-center gap-8 mb-16">
+                <div class="md:w-1/2 text-center md:text-left">
+                    <h2 class="text-3xl font-bold text-white mb-4">Наша команда</h2>
+                    <p class="text-gray-300 leading-relaxed">Мы — команда, состоящая из профессионалов в области технологий, дизайна и маркетинга, объединенных общей целью — помочь пользователям легко контролировать свои подписки.</p>
+                </div>
+                <div class="md:w-1/2 flex justify-center">
+                    <img src="{% static '/img/people-team-32-filled.svg' %}" alt="Команда" class="w-full max-w-xs"/>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
